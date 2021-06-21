@@ -11,7 +11,7 @@ para o gerenciamento dos dados de cervejas. E pelo end-point '/api/v1/wines' par
 <br /><br />
 
 __Testes__<br />
-Foram criados os testes de unidades para todas as funcionalidades da Api nas camadas de Controller e Service.<br />
+Foram criados os testes de unidades para todas as funcionalidades da Api nas camadas de Controller e Service com cobertura de 100% nessas camadas de ambas as entidades.<br />
 Foram testadas as respostas com sucesso e as excessões esperadas para cada funcionalidade.<br />
 A API de gerenciamento de vinhos foi construída pela técnica de TDD (Test-Driven Development).<br />
 <br /><br />

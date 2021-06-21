@@ -1,14 +1,15 @@
 package com.digitalInnovationOneGFTStart.beerstockapi.service;
 
 import com.digitalInnovationOneGFTStart.beerstockapi.builder.BeerDTOBuilder;
-import com.digitalInnovationOneGFTStart.beerstockapi.dto.BeerDTO;
-import com.digitalInnovationOneGFTStart.beerstockapi.entity.Beer;
-import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerAlreadyRegisteredException;
-import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerNotFoundException;
-import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerStockExceededDecrementException;
-import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerStockExceededIncrementException;
-import com.digitalInnovationOneGFTStart.beerstockapi.mapper.BeerMapper;
-import com.digitalInnovationOneGFTStart.beerstockapi.repository.BeerRepository;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.dto.BeerDTO;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.entity.Beer;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.exception.BeerAlreadyRegisteredException;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.exception.BeerNotFoundException;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.exception.BeerStockExceededDecrementException;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.exception.BeerStockExceededIncrementException;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.mapper.BeerMapper;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.repository.BeerRepository;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.service.BeerService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

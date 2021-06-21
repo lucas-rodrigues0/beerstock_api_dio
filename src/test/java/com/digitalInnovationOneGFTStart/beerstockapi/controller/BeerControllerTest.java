@@ -1,13 +1,13 @@
 package com.digitalInnovationOneGFTStart.beerstockapi.controller;
 
-
 import com.digitalInnovationOneGFTStart.beerstockapi.builder.BeerDTOBuilder;
-import com.digitalInnovationOneGFTStart.beerstockapi.dto.BeerDTO;
-import com.digitalInnovationOneGFTStart.beerstockapi.dto.QuantityDTO;
-import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerNotFoundException;
-import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerStockExceededDecrementException;
-import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerStockExceededIncrementException;
-import com.digitalInnovationOneGFTStart.beerstockapi.service.BeerService;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.controller.BeerController;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.dto.BeerDTO;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.dto.QuantityDTO;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.exception.BeerNotFoundException;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.exception.BeerStockExceededDecrementException;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.exception.BeerStockExceededIncrementException;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.service.BeerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,7 +28,6 @@ import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
-import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

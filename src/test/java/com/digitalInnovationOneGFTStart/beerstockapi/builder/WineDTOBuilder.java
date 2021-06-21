@@ -1,20 +1,20 @@
 package com.digitalInnovationOneGFTStart.beerstockapi.builder;
 
-import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.dto.BeerDTO;
-import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.enums.BeerType;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.dto.WineDTO;
+import com.digitalInnovationOneGFTStart.beerstockapi.stockApi.enums.WineType;
 import lombok.Builder;
 
 @Builder
-public class BeerDTOBuilder {
+public class WineDTOBuilder {
 
     @Builder.Default
     private Long id = 1L;
 
     @Builder.Default
-    private String name = "Brahma";
+    private String name = "PeTinto";
 
     @Builder.Default
-    private String brand = "Ambev";
+    private String grapeVariety = "Cabernet";
 
     @Builder.Default
     private int max = 50;
@@ -23,12 +23,12 @@ public class BeerDTOBuilder {
     private int quantity = 10;
 
     @Builder.Default
-    private BeerType type = BeerType.LAGER;
+    private WineType type = WineType.RED;
 
-    public BeerDTO toBeerDTO() {
-        return new BeerDTO(id,
+    public WineDTO toWineDTO() {
+        return new WineDTO(id,
                 name,
-                brand,
+                grapeVariety,
                 max,
                 quantity,
                 type);

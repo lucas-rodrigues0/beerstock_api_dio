@@ -11,7 +11,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import static springfox.documentation.builders.RequestHandlerSelectors.basePackage;
+import static springfox.documentation.builders.RequestHandlerSelectors.*;
 
 @Configuration
 @EnableSwagger2
@@ -33,13 +33,13 @@ public class SwaggerConfig {
                 .build()
                 .apiInfo(buildApiInfo());
     }
+
     private ApiInfo buildApiInfo() {
-        return new ApiInfoBuider()
+        return new ApiInfoBuilder()
                 .title(API_TITLE)
                 .description(API_DESCRIPTION)
                 .version("1.0.0")
                 .contact(new Contact(CONTACT_NAME, CONTACT_GITHUB, CONTACT_EMAIL))
                 .build();
     }
-
 }

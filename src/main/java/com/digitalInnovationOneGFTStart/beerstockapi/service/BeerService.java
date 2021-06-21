@@ -4,7 +4,8 @@ import com.digitalInnovationOneGFTStart.beerstockapi.dto.BeerDTO;
 import com.digitalInnovationOneGFTStart.beerstockapi.entity.Beer;
 import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerAlreadyRegisteredException;
 import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerNotFoundException;
-import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerStockExceededException;
+import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerStockExceededDecrementException;
+import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerStockExceededIncrementException;
 import com.digitalInnovationOneGFTStart.beerstockapi.mapper.BeerMapper;
 import com.digitalInnovationOneGFTStart.beerstockapi.repository.BeerRepository;
 import lombok.AllArgsConstructor;
@@ -59,7 +60,7 @@ public class BeerService {
                 .orElseThrow(() -> new BeerNotFoundException(id));
     }
 
-    public BeerDTO increment(Long id, int quantityToIncrement) throws  BeerNotFoundException, BeerStockExceededException {
+    public BeerDTO increment(Long id, int quantityToIncrement) throws  BeerNotFoundException, BeerStockExceededIncrementException {
         Beer beerToIncrementStock = verifyIfExists(id);
         int quantityAfterIncrement = quantityToIncrement + beerToIncrementStock.getQuantity();
         if (quantityAfterIncrement <= beerToIncrementStock.getMax()) {
@@ -67,7 +68,17 @@ public class BeerService {
             Beer incrementedBeerStock = beerRepository.save(beerToIncrementStock);
             return beerMapper.toDTO(incrementedBeerStock);
         }
-        throw  new BeerStockExceededException(id, quantityToIncrement);
+        throw  new BeerStockExceededIncrementException(id, quantityToIncrement);
     }
 
+    public BeerDTO decrement(Long id, int quantityToDecrement) throws BeerNotFoundException, BeerStockExceededDecrementException {
+        Beer beerToDecrementStock = verifyIfExists(id);
+        int quantityAfterDecrement = beerToDecrementStock.getQuantity() - quantityToDecrement;
+        if (quantityAfterDecrement >= 0) {
+            beerToDecrementStock.setQuantity(quantityAfterDecrement);
+            Beer decrementedBeerStock = beerRepository.save(beerToDecrementStock);
+            return beerMapper.toDTO(decrementedBeerStock);
+        }
+        throw new BeerStockExceededDecrementException(id, quantityToDecrement);
+    }
 }

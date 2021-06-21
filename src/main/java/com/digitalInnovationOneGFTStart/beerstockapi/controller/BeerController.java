@@ -1,8 +1,11 @@
 package com.digitalInnovationOneGFTStart.beerstockapi.controller;
 
 import com.digitalInnovationOneGFTStart.beerstockapi.dto.BeerDTO;
+import com.digitalInnovationOneGFTStart.beerstockapi.dto.QuantityDTO;
 import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerAlreadyRegisteredException;
 import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerNotFoundException;
+import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerStockExceededDecrementException;
+import com.digitalInnovationOneGFTStart.beerstockapi.exception.BeerStockExceededIncrementException;
 import com.digitalInnovationOneGFTStart.beerstockapi.service.BeerService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +42,15 @@ public class BeerController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id) throws BeerNotFoundException {
         beerService.deleteById(id);
+    }
+
+    @PatchMapping("/{id}/increment")
+    public BeerDTO increment(@PathVariable Long id, @RequestBody @Valid QuantityDTO quantityDTO) throws BeerNotFoundException, BeerStockExceededIncrementException {
+        return beerService.increment(id, quantityDTO.getQuantity());
+    }
+
+    @PatchMapping("/{id}/decrement")
+    public BeerDTO decrement(@PathVariable Long id, @RequestBody @Valid QuantityDTO quantityDTO) throws BeerNotFoundException, BeerStockExceededDecrementException {
+        return beerService.decrement(id, quantityDTO.getQuantity());
     }
 }

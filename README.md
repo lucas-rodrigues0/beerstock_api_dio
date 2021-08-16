@@ -1,5 +1,5 @@
 # Projeto: BeerStock_Api - Desenvolvendo Testes de Unidades para um sistema de gerenciamento de cervejas e vinhos em API REST com Spring Boot
-### para o bootcamp GFT start 2 - Digital Innovation One
+### para o bootcamp da Digital Innovation One
 
 <br />
 
